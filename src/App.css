@@ -1,33 +1,133 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.cards {
+  background: whitesmoke;
+  padding: 1rem;
+  margin: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.card-headings {
+  color: #333333;
+  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  opacity: 0.6;
+  width: 10rem;
+  margin-left: 1.25rem;
+}
+
+.form-input {
+  font: 13px "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  box-shadow: none;
+  background: none transparent;
+  margin-top: 0.4rem;
+  margin-left: 1rem;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  background-image: initial;
+  border: 0.05rem solid #a6a6a6;
+  border-radius: 0;
+  color: #333333;
+  display: block;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  outline: 0px;
+  height: 1.8rem;
+  line-height: 1.2rem;
+  max-width: 100%;
+  position: relative;
+  transition: background .2s, border .2s, box-shadow .2s, color .2s;
+  width: 15rem;
+}
+  .form-input:hover {
+    border-color: #333333; }
+  .form-input:focus {
+    border-color: #0078d4; }
+  .form-input::placeholder {
+    color: #a6a6a6;
+    font-size: 13px; }
+  .form-input.input-inline {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto; }
+  .form-input[type="file"] {
+    height: auto; }
+
+/*
+  Your use of the content in the files referenced here is subject to the terms of the license at https://aka.ms/fabric-assets-license
+*/
+@font-face {
+  font-family: 'FabricMDL2Icons';
+  src: url('data:application/octet-stream;base64,d09GRgABAAAAAAi0AA4AAAAAELwAA0UfAAAAAAAAAAAAAAAAAAAAAAAAAABPUy8yAAABRAAAAEgAAABgMVZvN2NtYXAAAAGMAAAAOwAAAUrq4ebpY3Z0IAAAAcgAAAAgAAAAKgnZCa9mcGdtAAAB6AAAAPAAAAFZ/J7mjmdhc3AAAALYAAAADAAAAAwACAAbZ2x5ZgAAAuQAAAC2AAABEHSbefRoZWFkAAADnAAAADIAAAA2//N+S2hoZWEAAAPQAAAAFQAAACQQAQgDaG10eAAAA+gAAAAKAAAACg4qAKZsb2NhAAAD9AAAAAgAAAAIAC4Anm1heHAAAAP8AAAAHQAAACAAJQGObmFtZQAABBwAAAP2AAAJ+o6Z8VBwb3N0AAAIFAAAABQAAAAg/1EAenByZXAAAAgoAAAAiQAAANN4vfIOeJxjYGHnY5zAwMrAwDqL1ZiBgVEaQjNfZEhjEuJgZeViZGIEAwYgEGBAAN9gBQUGh+cCL95zgPkQkgGsjgXCU2BgAAC2kQgoeJxjYGBgZoBgGQZGBhBwAfIYwXwWBg0gzQakGRmYngu8eP//PwMDhJb4KC4MVQ8EjGwMIx4AAMFXC5QAeJxj0GIIZShgaGBYxcjA2MDswHiAwQGLCBAAAKocB5V4nF2Pv07DQAzGcyS0hCdAOiGddSpDlYid6YZLJNQlJQznpYDUSqTvgJSFxQPP4m4Z82IIzBH+Lra/z/p8v3On+cl8dpylRyopVpw34aDUCw7q7Zn9+SFP7zZlYUzVeVb3ZcFqCaJrThf1TbBoyND1lkxtHh+2nC1il8WO8NJw0oZO6m0Adqi/xx3iVTySxSOEEt9P8X2MS/q1LFaG04smrAP3XrPzqAFMxWMTePQaEH/IpD91ZxPjbDll28BOc4JEn8oC90SahPtLj3/1oJL/hvttyL+rQfVN3PQW9IdhwYKwoZdn21AJGmD5DoT8ZMYAAQACAAgACv//AA94nHWOOwrCQBCGv7hZDYjIIsHCQpYgFhYWIdimtvA41lNYWXsGj5A6J/EcPjbqLNgoOM//H+ZFjzOkB7vHMICN827hnT+bS2h6TbfF7u/HU7pDJYkhU2WoJPeucL7yrnQZoZZQm1bSTzZtqBnFgb5of9w9ZMyEKTPmFCxZsabUPXptoVeT6JXPXV5Utipzr578w1i5i+UhKUEMnUiihnT8gowrMuCmfzy19EI0fySSb8AbUrFBTwAAeJxjYGRgYGB2le/6a8sQz2/zlYGbgwEE9v892ACib1zVWgeiORjA4pwMTCAKADHRCXwAAHicY2BkYOBgAAE4yciACpgAAsoAHQAAAAUqAKYIAAAAAQAAAAAAABYALgCIeJxjYGRgYGBmMGHgZQABRjDJBcKMkSAmAAlXALUAAAB4nLVUP4scNxR/e7v2XXB8hEDApYoQzscya6+LI3Z12HHla87mwE1AO6OdEZ4dCUnjYYILly7yMdIY8ilCAilT5xOkTpUy7z1pdu+8G3MJZIfV/PT0/v7e0wDAndFXMIL4e4D/iEfwOe4i3oN9+CbhMcqfJTxB/G3CN+BTsAnfhM/gTcL78DV8n/ABfAG/JHwLjuH3hG+Pfh5NEj6E471fMcpo8gnuir0/Ex7Bl+OLhPfgcPxdwmOUv0t4gvjHhG/AnfFvCd8EMf4j4X1wk4OED+B4Mvi5BS8mPyR8e/xu8lfCh/Di4O1P78X83v0TcaZzZ7xZBvHYOGucDNo0mTita3Guyyp4ca68cq9VkT2VC6dzcfbk2Vyceq+CP1dlW0u3fbAtuVDOo2fxIJufxFM6jGfPVWmU0F5IEZws1Eq6V8IsRajUpfxKZ1pL4tysrGy08tnO5KsQ7MPZrOu6bDWcZ2gzC701pZO26mdL0wQ/25j71tpaq0LQQSZemlasZC9arzAJTIzEIhiROyWDmopCe1vLfipkUwjrNJ7mqKLwLb2wyq10COhu0XMRtc5VQ77wwAvjBrCkCNPtUq0zRZuHqSDm0XZKNkMA3Yiu0nl1KbMOg+omr9sC27TO3jR1L470XaFWC8xlo44ePpYtqxe6KYVTPmCniNVNADJf+3rEDBxpjBLUilrgNEYtTNfURhZX2ZORKuWoHIOhcG2DbYMoFJVJOpWq7VVGcRibPqlTQ9Ah8lPphcacs+t3G96DgDncg/twgugMNOTgwIDH/xICyh4jcnjnaZUo0YgayPDkFGp8BJyjrIQKzzzvFL4Var/GtUDNp2i3wD35phhP8MsyZ3vPmmRHViW06E+i5nUsrqNzwXn4lLPAL12GOidXbAfLy3bPORuDq0AdqkriPzADBUpXnOUrlBFLdFKx7i7+St63yOCgneN7hXuJOWlmK/sXzBPPAaUPYYZPx0+G/j60z1KcGeKevZTsx6KHHqVL9kbVznZG95yzxY5o7qNYW1DvX3JNgpno8d0yd5GJyNigTTLDVTvUoDoUTHFfsJ7ljvcsIT4ojuXORNs8eVFpL9m35b5SzYHPyGrBeQydqLkishryihaeu+C2JMt1DdNrddXyvkCbHPdT5ivOfIw7Xcf5sALNk9gxTzmuuznrUqWknWM1Lc9dsZN7sqkZHaH+XXzThC4SL7u8xxz+K7cb7wV7KlHmeI5DulPDrO6qYIi+ndejSzNAlcRaAscbbgH5j7UWKOm4csO38mOzJ69MleK+mLTGqiJu+Wa1bEnZDt0c/JBmzTf5n2c0fhmb1JmN9+GG6MQyzQ/lu2CmY2//h7v9N1GaOJIAAHicY2BmAIP/fgzlDJiAGQApLQHLeJzbwKDNsImRk0mbcRMXiNzO1ZobaqvKwKG9nTs12EFPBsTiifCw0JAEsXidzbXlhUEsPh0VGREeEItfTkKYjwPEEuDj4WRnAbEEwQDEEtowoSDAAMhi2M4IN5oJbjQz3GgWuNGscKPZ5CShRrPDjeaAG80JN3qTMCO79gYGBdfaTAkXAMQBKBoAAAA=') format('truetype');
+}
+
+.icon {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: 'FabricMDL2Icons';
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+}
+
+.icon--Add:before { content: "\E710"; }
+.icon--Calculator:before { content: "\E8EF"; }
+
+
+
+.btn {
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  background-color: #f4f4f4;
+  border: none;
+  color: #333333;
+  font-size: 13px;
+  font-weight: 600;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  vertical-align: top;
+  padding-top: 0;
+  padding-right: 0.8rem;
+  padding-left: 0.8rem;
+  padding-bottom: 0;
+  display: inline-block;
+  height: 1.8rem;
+  min-width: 4rem;
+  line-height: 1.2rem;
+  outline: transparent;
+  border: 0.05rem solid transparent;
+  border-image: initial;
+  border-radius: 0;
+  user-select: none;
+  white-space: nowrap; 
+}
+.btn.btn-primary {
+  background-color: #f2c811;
+  color: #212121; 
+}
+.btn.btn-primary:focus, .btn.btn-primary:hover {
+  background: #ddb60c;
   }
-  to {
-    transform: rotate(360deg);
-  }
+.btn.btn-secondary {
+  background-color: #0078d4;
+  color: #f4f4f4; 
+}
+.btn.btn-secondary:focus, .btn.btn-secondary:hover {
+  background: #006abb; 
+}
+.footer {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  bottom: 1rem;
+}
+.footer button {
+  margin-left: 1rem !important;
+  width: 50%;
 }
