@@ -1,5 +1,4 @@
-async function numDuplicates(array) {
-    // const result = await externalReques();
+function numDuplicates(array) {
     if(!array || !array[0]) {
         return;
     }
